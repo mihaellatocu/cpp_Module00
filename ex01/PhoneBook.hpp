@@ -3,11 +3,19 @@
 
 class PhoneBook
 {
-    Contact contacts[i];
-    int index;
+    private:
+        Contact contacts[8];
+        int index;
 
 public:
-    void add_contact(Contact new_contact);
+    PhoneBook();
 
+    void addContact(Contact new_contact);
 
+    void printContacts();
+
+    void printContacts(int index);
+
+    ~PhoneBook();
+   
 };
