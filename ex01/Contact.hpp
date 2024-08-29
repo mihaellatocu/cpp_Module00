@@ -21,4 +21,8 @@ public:
     //     std::string new_phone_number, std::string new_darkest_secret);
 
     std::string getContact();
+
+    std::string getUser();
+
+    std::string getContactDetails();
 };

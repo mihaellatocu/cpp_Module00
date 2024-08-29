@@ -1,7 +1,6 @@
 #include "PhoneBook.hpp"
-// #include <iostream>
-// #include <cstring>
-// #include "Contact.hpp"
+#include <iomanip>
+
 
    PhoneBook::PhoneBook()
    {
@@ -10,7 +9,6 @@
 
    void PhoneBook::addContact(Contact new_contact)
    {
-      std::cout << this->index << "\n";
       if (this->index <= 7)
       {
          contacts[this->index] = new_contact;
@@ -21,27 +19,29 @@
          for (int i = 0; i < 7; i++)
          {
             contacts[i] = contacts[i + 1];
-            //std::cout << " this->contacts[i] " <<  this->contacts[i] << "\n";
-
          }
          contacts[7] = new_contact;
       }
-      std::cout <<"Dupa ce am facut rocada " << this->index << "\n";
    }
 
    void PhoneBook::printContacts()
    {
       for (int i = 0; i < this->index; i++)
-         std::cout<< i + 1 << " | "<< contacts[i].getContact();
+         std::cout<< std::setw(10) << " " <<  i + 1 << " | "<< contacts[i].getContact();
    }
 
 
    void PhoneBook::printContacts(int index)
    {
-      std::cout<< index << " | "<< contacts[index - 1].getContact();
+      std::cout << contacts[index - 1].getContactDetails();
    }
 
-   PhoneBook::~PhoneBook()
+   int PhoneBook::getIndex()
    {
-      std::cout << "Destructor called\n";
+   return this->index;
    }
+
+   // PhoneBook::~PhoneBook() // The destructor is automatically called, no need to add this function
+   // {
+   //    std::cout << "Destructor called\n";
+   // }
