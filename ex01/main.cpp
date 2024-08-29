@@ -7,15 +7,15 @@
 
 std::string str_toupper(std::string str)
 {
-    for ( int i = 0; i < str.length(); i++)
+    for (size_t i = 0; i < str.length(); i++)
         str[i] = std::toupper(str[i]);
     return str;
 }
 
 std::string trim(std::string &str)
 {
-    int start = 0;
-    int end = str.length() - 1;
+    size_t start = 0;
+    size_t end = str.length() - 1;
 
     while(start < str.length() && (str[start] == ' ' || str[start] == '\t'))
         ++start;

@@ -1,7 +1,7 @@
 #include "Contact.hpp"
 #include <iomanip>
 
-std::string formatCell(std::string element, int width)
+std::string formatCell(std::string element, size_t width)
 {
     if (element.length() > width)
     {
