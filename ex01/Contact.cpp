@@ -25,9 +25,10 @@ std::string formatCell(std::string element, size_t width)
 Contact::Contact() : first_name(""), last_name(""), nickname(""), phone_number(""), darkest_secret("") {}
 
 Contact::Contact(std::string &new_first_name, std::string &new_last_name,
-    std::string &new_nickname, std::string &new_phone_nr, std::string &new_darkest_secret) : first_name(new_first_name),
-    last_name(new_last_name), nickname(new_nickname), phone_number(new_phone_nr), darkest_secret(new_darkest_secret) 
-    { }
+                 std::string &new_nickname, std::string &new_phone_nr, std::string &new_darkest_secret) : first_name(new_first_name),
+                 last_name(new_last_name), nickname(new_nickname), phone_number(new_phone_nr), darkest_secret(new_darkest_secret)
+{
+}
 
 std::string Contact::getContact()
 {
@@ -42,8 +43,8 @@ std::string Contact::getUser()
 std::string Contact::getContactDetails()
 {
     std::string user = "";
-    
+
     user = "First name: " + first_name + "\n" + "Last name:  " + last_name + "\n" +
-    "Nickname:   " + nickname + "\n" + "Phone nr:   " + phone_number + "\n" + "Darkest secret: " + darkest_secret + "\n";
+           "Nickname:   " + nickname + "\n" + "Phone nr:   " + phone_number + "\n" + "Darkest secret: " + darkest_secret + "\n";
     return user;
 }

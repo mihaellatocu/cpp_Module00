@@ -3,7 +3,7 @@
 #include <cctype>
 #include <limits> // Pentru std::numeric_limits
 
-//cmd k cmd F for format// to install copilot
+// cmd k cmd F for format// to install copilot
 
 std::string str_toupper(std::string str)
 {
@@ -17,7 +17,7 @@ std::string trim(std::string &str)
     size_t start = 0;
     size_t end = str.length() - 1;
 
-    while(start < str.length() && (str[start] == ' ' || str[start] == '\t'))
+    while (start < str.length() && (str[start] == ' ' || str[start] == '\t'))
         ++start;
     if (start == str.length())
         return "";
@@ -35,7 +35,7 @@ void read_field(std::string prompt, std::string &field)
         std::getline(std::cin, input);
         field = trim(input);
         if (!field.empty())
-            break ;
+            break;
         std::cout << "Field cannot be empty. Please enter a valid value.\n";
     }
 }
@@ -52,7 +52,7 @@ void add_user(std::string &first_name, std::string &last_name, std::string &nick
 int main()
 {
     PhoneBook p_book;
-    std::string comand;
+    std::string cmd_search;
     std::string first_name;
     std::string last_name;
     std::string nickname;
@@ -62,21 +62,22 @@ int main()
 
     do
     {
-        std::cout << B "Enter a comand: " << G "ADD SEARCH or EXIT" RST << "\n";
-        std::cin >> comand;
-        comand = str_toupper(comand);
-        std::cin.ignore(); //ignore the newline from buffer after comand
-        if (comand == "ADD")
+        std::cout << B "Enter a command: " << G << BOLD "ADD  SEARCH  EXIT" RST << "\n";
+        std::cin >> cmd_search;
+        cmd_search = str_toupper(cmd_search);
+        std::cin.ignore(); // ignore the newline from buffer after cmd_search
+        if (cmd_search == "ADD")
         {
             add_user(first_name, last_name, nickname, phone_nr, darkest_secret);
-            Contact contact1(first_name , last_name , nickname, phone_nr , darkest_secret);
+            Contact contact1(first_name, last_name, nickname, phone_nr, darkest_secret);
             p_book.addContact(contact1);
         }
-        else if (comand == "SEARCH")
+        else if (cmd_search == "SEARCH")
         {
             p_book.printContacts();
             bool validInput = false;
-            do {
+            do
+            {
                 std::cout << C "Add index between 1 and 8: " RST;
                 std::cin >> index;
                 if (std::cin.fail())
@@ -85,14 +86,14 @@ int main()
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     std::cout << RED "The value entered is not valid\n" RST;
                     validInput = true;
-                    continue ;
+                    continue;
                 }
                 else if (index < 1 || index > 8)
                     std::cout << RED "Invalid index. Please add a nr between 1 and 8\n" RST;
                 else if (index > p_book.getIndex())
                 {
                     std::cout << M "No contact available\n" RST;
-                    validInput = true;
+                    //validInput = true;
                 }
                 else
                 {
@@ -100,10 +101,9 @@ int main()
                     validInput = true;
                 }
             } while (!validInput);
-            continue ;
+            continue;
         }
-    } while (comand != "EXIT");
-
+    } while (cmd_search != "EXIT");
 
     return (0);
 }
